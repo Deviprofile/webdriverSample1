@@ -1,5 +1,6 @@
 package testScripts;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class GooglePageTest {
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.manage().window().maximize();
 		driver.get("https://www.google.com/");
 		WebElement srcBox=driver.findElement(By.id("APjFqb"));
@@ -20,7 +22,7 @@ public class GooglePageTest {
 		System.out.println("Page Title.."+strTitle);
 		System.out.println("Page URL..."+driver.getCurrentUrl());
 		driver.navigate().back();*/
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		List<WebElement> items=driver.findElements(By.xpath("//ul[@class='G43f7e'][1]//li//descendant::div[@class='wM6W7d']"));
 		System.out.println("No of items:"+items.size());
 		for(int i=0;i< items.size();i++) {
